@@ -3,16 +3,17 @@
 1. 启动服务
 - 进入项目目录：
   cd C:\Users\renha\Desktop\arc
+  注意最终以arc收尾
 - 启动服务：
   node server.js
 - 服务启动成功后，在浏览器中访问：
   http://localhost:3000
 
 2. 上传图片
-- 将图片文件放入项目目录下的 public 目录中，例如：
-  public/your-image.png
+- 将图片文件放入项目目录下的 public 目录中的image目录下，例如：
+  public/image/your-image.png
 - 在页面中使用图片时，路径应写为：
-  /your-image.png
+  /image/your-image.png
 - 如果是上传到服务器的静态资源目录，确保文件名没有空格，并且文件后缀正确。
 
 3. 上传干员信息
@@ -29,7 +30,7 @@
     "name": "某干员",
     "branch": "先锋",
     "subProfession": "近卫",
-    "image": "/your-image.png"
+    "image": "/image/your-image.png"
   }
 
 4. 重新加载页面
