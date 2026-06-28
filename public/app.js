@@ -582,7 +582,7 @@ function resolveCombatRound() {
   } else {
     state.combat.ended = true;
     renderCombatInterface();
-    elements.combatStatus.textContent = '没有更多可用干员，连锁对抗结束。';
+    elements.combatStatus.textContent = '没有更多可用干员，连锁博弈结束。';
   }
 }
 

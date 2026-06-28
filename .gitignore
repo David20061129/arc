@@ -1,0 +1,11 @@
+# 干员头像由脚本下载，不纳入版本库（约 17MB，420 张）
+# 克隆后运行 `npm run fetch-avatars` 即可全部下载
+/public/image/*.png
+/public/image/*.jpg
+/public/image/*.jpeg
+/public/image/*.webp
+
+# 依赖与杂项
+node_modules/
+*.log
+.DS_Store

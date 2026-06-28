@@ -42,7 +42,8 @@ const mimeTypes = {
 
 const server = http.createServer((req, res) => {
   const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
-  const pathname = url.pathname;
+  // 解码百分号编码，否则中文文件名（如 /image/能天使.png）会取不到文件
+  const pathname = decodeURIComponent(url.pathname);
 
   if (pathname === '/api/operators') {
     res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
