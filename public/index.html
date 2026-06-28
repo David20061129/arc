@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>明日方舟连锁辅助</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">前后端分离示例</p>
+          <h1>明日方舟连锁博弈 / 连锁对抗辅助程序</h1>
+          <p class="subtext">根据你的设计说明，完成一套可交互的双模式辅助界面。</p>
+        </div>
+        <div class="mode-switch" id="modeButtons">
+          <button class="active" data-mode="chainGame">连锁博弈</button>
+          <button data-mode="chainCombat">连锁对抗</button>
+        </div>
+      </header>
+
+      <main>
+        <section id="chainGameView" class="panel">
+          <div class="panel-header">
+            <h2>连锁博弈</h2>
+            <p>先禁用，再选择；设置禁用与选择数量后生成两方名单。</p>
+          </div>
+
+          <div class="chain-game-controls">
+            <label>
+              禁用数量
+              <input id="disableCount" type="number" min="0" max="10" value="2" />
+            </label>
+            <label>
+              选择数量
+              <input id="selectCount" type="number" min="0" max="10" value="2" />
+            </label>
+            <label>
+              当前玩家
+              <select id="currentPlayer">
+                <option value="A">玩家A</option>
+                <option value="B">玩家B</option>
+              </select>
+            </label>
+            <label>
+              当前操作
+              <select id="currentAction">
+                <option value="disable">禁用</option>
+                <option value="select">选择</option>
+              </select>
+            </label>
+            <button id="generateChainGameBtn">生成名单</button>
+          </div>
+
+          <div class="chain-layout">
+            <div>
+              <div class="search-row">
+                <input id="operatorSearch" type="search" placeholder="搜索干员名称或子职业" />
+              </div>
+              <div id="operatorList" class="operator-grid"></div>
+            </div>
+            <aside class="selection-panel">
+              <h3>当前选择</h3>
+              <div id="selectionSummary"></div>
+              <h3>生成结果</h3>
+              <div id="chainGameResult"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="chainCombatView" class="panel hidden">
+          <div class="panel-header">
+            <h2>连锁对抗</h2>
+            <p>随机抽取干员，双方秘密决策，直到无可用干员或点击结束。</p>
+          </div>
+
+          <div class="combat-toolbar">
+            <button id="startRoundBtn">开始新回合</button>
+            <button id="endCombatBtn" class="secondary">结束</button>
+            <label>
+              视角切换
+              <select id="combatViewPlayer">
+                <option value="A">玩家A视角</option>
+                <option value="B">玩家B视角</option>
+              </select>
+            </label>
+          </div>
+
+          <div id="combatStatus" class="status-banner"></div>
+
+          <div class="combat-columns">
+            <section class="combat-player-card">
+              <h3>玩家A</h3>
+              <div class="resource-row">
+                <span>人才点数：<strong id="talentA">20</strong></span>
+                <span>情报点数：<strong id="intelA">0</strong></span>
+              </div>
+              <div class="decision-box" id="playerADecision"></div>
+            </section>
+            <section class="combat-player-card">
+              <h3>玩家B</h3>
+              <div class="resource-row">
+                <span>人才点数：<strong id="talentB">20</strong></span>
+                <span>情报点数：<strong id="intelB">0</strong></span>
+              </div>
+              <div class="decision-box" id="playerBDecision"></div>
+            </section>
+          </div>
+
+          <section class="round-panel">
+            <h3>当前干员</h3>
+            <div id="currentOperatorCard" class="current-operator"></div>
+            <h3>回合记录</h3>
+            <div id="roundLog" class="log-box"></div>
+            <h3>双方已获干员</h3>
+            <div id="finalRoster" class="operator-grid compact"></div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
